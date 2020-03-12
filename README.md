@@ -18,10 +18,32 @@ Hugo theme using Adobe [coral-spectrum](https://opensource.adobe.com/coral-spect
 
 See [exampleSite](exampleSite/) for a sample docs website.
 
-A live demo is available at: https://git.corp.adobe.com/pages/reef/hugo-spectrum
+A live demo is available at: [https://opensource.adobe.com/hugo-spectrum/](https://opensource.adobe.com/hugo-spectrum/)
 
 
 # Maintainers Notice
+
+## Test `exampleSite` using local theme
+
+Run the site using the local theme, i.e. `--theme hugo-spectrum`
+which is mapped to local theme folder and not github remote module.
+
+```sh
+docker run --rm -i -t -p 1313:1313 --rm \
+     -v "`pwd`":/src \
+     -v `pwd`:/src/exampleSite/themes/hugo-spectrum \
+     amuraru/hugo:0.67.1 \
+     server -v \
+     --source /src/exampleSite \
+     --theme hugo-spectrum \
+     --watch \
+     --buildDrafts \
+     --disableFastRender \
+     --noHTTPCache \
+     --enableGitInfo=false \
+     --cleanDestinationDir \
+     --path-warnings
+```
 
 ## Update `coral-spectrum` version
 
@@ -44,23 +66,6 @@ git add .
 git commit
 ```
 See also https://opensource.adobe.com/coral-spectrum/dist/documentation/manual/manual.html#consuming for full details.
-
-## Update `spectrum-css-grid` version
-This theme is using [Spectrum CSS Grid](https://opensource.adobe.com/spectrum-css-grid/). 
-To upgrade `spectrum-css-grid` follow these steps:
-
-```sh
-set -e
-#get the package tarball url
-wget `npm view @adobe/spectrum-css-grid dist.tarball`
-tar xzvf spectrum-css-grid-*.tgz
-cp package/dist/spectrum-css-grid.css static/css/spectrum-css-grid.css
-rm -rf spectrum-css-grid-*.tgz package
-
-# commit to git
-git add .
-git commit
-```
 
 ## Update `mermaid` version
 This theme has support for [Mermaid](https://mermaid-js.github.io/mermaid/) diagrams. 
@@ -94,19 +99,8 @@ git commit
 ```
 
 ## Update `exampleSite` demo site
-When updating hugo theme in this repository make sure you:
 
-1. Update the `exampleSite` theme version:
-    ```sh
-    cd exampleSite
-    git submodule update --remote --merge
-    git commit themes/hugo-spectrum -m "Updated theme in exampleSite"
-    git push
-    ```
-
-2. Generate and publish `exampleSite` in `gh-pages` branch
-
-    Run [publish-to-gh-pages.sh](publish-to-gh-pages.sh)
+Run [publish-to-gh-pages.sh](publish-to-gh-pages.sh)
 
 # Acknowledgments
 [Docsy](https://github.com/google/docsy) inspired layout for this theme.

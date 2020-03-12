@@ -16,11 +16,20 @@ set -x
 # from root dir of this repo
 MESSAGE=$(git log --format=format:%s -1)
 
-git clone --single-branch --branch gh-pages git@git.corp.adobe.com:reef/hugo-spectrum.git site-pages
+git clone --single-branch --branch gh-pages git@github.com:adobe/hugo-spectrum.git site-pages
 # Remove previous version - will be regenerated
 rm -rf site-pages/*
 
-hugo -v --source="$PWD/exampleSite" --destination="$PWD/site-pages" --ignoreCache
+docker run --rm \
+    -v "`pwd`":/src \
+    -v "`pwd`/site-pages":/target \
+    amuraru/hugo:0.67.1 \
+    --source="/src/exampleSite" \
+    --destination="/target" \
+    --cleanDestinationDir \
+    --forceSyncStatic \
+    --path-warnings \
+    --ignoreCache
 
 cd site-pages
 git add . -f --all
