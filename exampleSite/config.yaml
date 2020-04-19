@@ -9,20 +9,20 @@
 # written permission of Adobe.
 #
 
-baseURL: "https://opensource.adobe.com/hugo-spectrum"
+baseURL: "https://amuraru.github.io/hugo-spectrum"
 title: Adobe Spectrum Hugo Theme
 params:
   ui:
     sidebar_menu_compact: true
     navbar_disable: false
   fuseSearch: true
-  github_repo: "https://github.com/adobe/hugo-spectrum"
+  github_repo: "https://github.com/amuraru/hugo-spectrum"
   github_subdir: "exampleSite"
 outputs:
   home:
     - json
     - html
-theme: "github.com/adobe/hugo-spectrum"
+theme: "github.com/amuraru/hugo-spectrum"
 enableGitInfo: true
 canonifyURLs: true
 metaDataFormat: "yaml"
@@ -61,4 +61,4 @@ markup:
 
 modules:
   imports:
-  - path: "github.com/adobe/hugo-spectrum/v1"
+  - path: "github.com/amuraru/hugo-spectrum/v1"
