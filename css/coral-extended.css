@@ -30,6 +30,27 @@ body {
 
 ._coral-Alert {
     display: block;
+    min-width: 200px !important;
+}
+
+._coral-Alert--success {
+    background-color: rgba(51, 171, 132, 0.1) !important;
+}
+
+._coral-Alert--help {
+    background-color: rgba(55, 142, 240, 0.1) !important;
+}
+
+._coral-Alert--info {
+    background-color: rgba(55, 142, 240, 0.1) !important;
+}
+
+._coral-Alert--warning {
+    background-color: rgba(255, 221, 102, .1) !important;
+}
+
+._coral-Alert--error {
+    background-color: rgba(236, 91, 98, 0.1) !important;
 }
 
 .coral-Heading--1 {
